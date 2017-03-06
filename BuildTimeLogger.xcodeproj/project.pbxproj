@@ -1,0 +1,330 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DA362A931E5E076900660B80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362A921E5E076900660B80 /* main.swift */; };
+		DA362A9A1E5E07EB00660B80 /* XcodeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362A991E5E07EB00660B80 /* XcodeDatabase.swift */; };
+		DA362A9F1E5E08B400660B80 /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DA362A9E1E5E08B400660B80 /* NSData+GZIP.m */; };
+		DA362AA11E5E403700660B80 /* DerivedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362AA01E5E403600660B80 /* DerivedDataManager.swift */; };
+		DA362AA31E5E40DB00660B80 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362AA21E5E40DB00660B80 /* UserSettings.swift */; };
+		DA362AA51E5E410300660B80 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362AA41E5E410300660B80 /* File.swift */; };
+		DA5B62581E67402B009DC651 /* BuildHistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B62571E67402B009DC651 /* BuildHistoryEntry.swift */; };
+		DA5B625A1E67406E009DC651 /* BuildTimeLoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B62591E67406E009DC651 /* BuildTimeLoggerApp.swift */; };
+		DA5B625C1E67409A009DC651 /* BuildHistoryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B625B1E67409A009DC651 /* BuildHistoryDatabase.swift */; };
+		DA5B625E1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B625D1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA362A8D1E5E076900660B80 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DA362A8F1E5E076900660B80 /* BuildTimeLogger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BuildTimeLogger; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA362A921E5E076900660B80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DA362A991E5E07EB00660B80 /* XcodeDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeDatabase.swift; sourceTree = "<group>"; };
+		DA362A9B1E5E089600660B80 /* BuildTimeLogger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BuildTimeLogger-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA362A9D1E5E08B400660B80 /* NSData+GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GZIP.h"; sourceTree = "<group>"; };
+		DA362A9E1E5E08B400660B80 /* NSData+GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GZIP.m"; sourceTree = "<group>"; };
+		DA362AA01E5E403600660B80 /* DerivedDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivedDataManager.swift; sourceTree = "<group>"; };
+		DA362AA21E5E40DB00660B80 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		DA362AA41E5E410300660B80 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		DA5B62571E67402B009DC651 /* BuildHistoryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildHistoryEntry.swift; sourceTree = "<group>"; };
+		DA5B62591E67406E009DC651 /* BuildTimeLoggerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTimeLoggerApp.swift; sourceTree = "<group>"; };
+		DA5B625B1E67409A009DC651 /* BuildHistoryDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildHistoryDatabase.swift; sourceTree = "<group>"; };
+		DA5B625D1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XcodeDatabase+BuildHistoryEntry.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DA362A8C1E5E076900660B80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DA362A861E5E076900660B80 = {
+			isa = PBXGroup;
+			children = (
+				DA362A911E5E076900660B80 /* BuildTimeLogger */,
+				DA362A901E5E076900660B80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DA362A901E5E076900660B80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA362A8F1E5E076900660B80 /* BuildTimeLogger */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA362A911E5E076900660B80 /* BuildTimeLogger */ = {
+			isa = PBXGroup;
+			children = (
+				DA5B625F1E674121009DC651 /* Managers */,
+				DA5B62561E67400F009DC651 /* Models */,
+				DA5B62551E673FC1009DC651 /* GZIP */,
+				DA362A921E5E076900660B80 /* main.swift */,
+				DA362A9B1E5E089600660B80 /* BuildTimeLogger-Bridging-Header.h */,
+				DA5B62591E67406E009DC651 /* BuildTimeLoggerApp.swift */,
+				DA5B625D1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift */,
+			);
+			path = BuildTimeLogger;
+			sourceTree = "<group>";
+		};
+		DA5B62551E673FC1009DC651 /* GZIP */ = {
+			isa = PBXGroup;
+			children = (
+				DA362A9D1E5E08B400660B80 /* NSData+GZIP.h */,
+				DA362A9E1E5E08B400660B80 /* NSData+GZIP.m */,
+			);
+			name = GZIP;
+			sourceTree = "<group>";
+		};
+		DA5B62561E67400F009DC651 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA362AA41E5E410300660B80 /* File.swift */,
+				DA5B62571E67402B009DC651 /* BuildHistoryEntry.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DA5B625F1E674121009DC651 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DA362A991E5E07EB00660B80 /* XcodeDatabase.swift */,
+				DA362AA01E5E403600660B80 /* DerivedDataManager.swift */,
+				DA362AA21E5E40DB00660B80 /* UserSettings.swift */,
+				DA5B625B1E67409A009DC651 /* BuildHistoryDatabase.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA362A8E1E5E076900660B80 /* BuildTimeLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA362A961E5E076900660B80 /* Build configuration list for PBXNativeTarget "BuildTimeLogger" */;
+			buildPhases = (
+				DA362A8B1E5E076900660B80 /* Sources */,
+				DA362A8C1E5E076900660B80 /* Frameworks */,
+				DA362A8D1E5E076900660B80 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BuildTimeLogger;
+			productName = BuildTimeLogger;
+			productReference = DA362A8F1E5E076900660B80 /* BuildTimeLogger */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA362A871E5E076900660B80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Marcin Religa";
+				TargetAttributes = {
+					DA362A8E1E5E076900660B80 = {
+						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DA362A8A1E5E076900660B80 /* Build configuration list for PBXProject "BuildTimeLogger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DA362A861E5E076900660B80;
+			productRefGroup = DA362A901E5E076900660B80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA362A8E1E5E076900660B80 /* BuildTimeLogger */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA362A8B1E5E076900660B80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA362A9A1E5E07EB00660B80 /* XcodeDatabase.swift in Sources */,
+				DA5B62581E67402B009DC651 /* BuildHistoryEntry.swift in Sources */,
+				DA362AA51E5E410300660B80 /* File.swift in Sources */,
+				DA5B625A1E67406E009DC651 /* BuildTimeLoggerApp.swift in Sources */,
+				DA5B625C1E67409A009DC651 /* BuildHistoryDatabase.swift in Sources */,
+				DA362A9F1E5E08B400660B80 /* NSData+GZIP.m in Sources */,
+				DA362A931E5E076900660B80 /* main.swift in Sources */,
+				DA362AA31E5E40DB00660B80 /* UserSettings.swift in Sources */,
+				DA362AA11E5E403700660B80 /* DerivedDataManager.swift in Sources */,
+				DA5B625E1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DA362A941E5E076900660B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DA362A951E5E076900660B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DA362A971E5E076900660B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BuildTimeLogger/BuildTimeLogger-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DA362A981E5E076900660B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BuildTimeLogger/BuildTimeLogger-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA362A8A1E5E076900660B80 /* Build configuration list for PBXProject "BuildTimeLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA362A941E5E076900660B80 /* Debug */,
+				DA362A951E5E076900660B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA362A961E5E076900660B80 /* Build configuration list for PBXNativeTarget "BuildTimeLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA362A971E5E076900660B80 /* Debug */,
+				DA362A981E5E076900660B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DA362A871E5E076900660B80 /* Project object */;
+}
