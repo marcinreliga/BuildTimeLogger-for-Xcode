@@ -23,7 +23,7 @@ struct BuildHistoryDatabase {
 			if let buildTime = $0["buildTime"] as? Int,
 				let schemeName = $0["schemeName"] as? String,
 				let timestamp = $0["timestamp"] as? TimeInterval {
-				return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(timeIntervalSince1970: timestamp))
+				return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(timeIntervalSince1970: timestamp), username: nil)
 			}
 
 			return nil

@@ -12,6 +12,7 @@ struct BuildHistoryEntry {
 	let buildTime: Int
 	let schemeName: String
 	let date: Date
+	let username: String?
 
 	var serialized: [String: Any] {
 		return [

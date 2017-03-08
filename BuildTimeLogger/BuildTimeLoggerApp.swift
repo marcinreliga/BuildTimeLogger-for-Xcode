@@ -11,22 +11,21 @@ import Foundation
 final class BuildTimeLoggerApp {
 	private let buildHistoryDatabase: BuildHistoryDatabase
 	private let notificationManager: NotificationManager
+	private let dataParser: DataParser
+	private let xcodeDatabaseManager: XcodeDatabaseManager
 
 	init(buildHistoryDatabase: BuildHistoryDatabase = BuildHistoryDatabase(),
-	     notificationManager: NotificationManager = NotificationManager()) {
+	     notificationManager: NotificationManager = NotificationManager(),
+	     dataParser: DataParser = DataParser(),
+	     xcodeDatabaseManager: XcodeDatabaseManager = XcodeDatabaseManager()) {
 		self.buildHistoryDatabase = buildHistoryDatabase
 		self.notificationManager = notificationManager
-	}
-
-	func format(time: Int) -> String {
-		let minutes = time / 60
-		let seconds = time % 60
-
-		return "\(minutes)m \(seconds)s"
+		self.dataParser = dataParser
+		self.xcodeDatabaseManager = xcodeDatabaseManager
 	}
 
 	func run() {
-		guard let latestBuildData = latestBuildData else {
+		guard let latestBuildData = xcodeDatabaseManager.latestBuildData else {
 			return
 		}
 
@@ -43,44 +42,33 @@ final class BuildTimeLoggerApp {
 
 		let totalTime = totalBuildsTimeToday(for: updatedBuildHistoryData)
 
-		let latestBuildTimeFormatted = format(time: latestBuildData.buildTime)
-		let totalBuildsTimeTodayFormatted = format(time: totalTime)
-
-		print("current build time: \(latestBuildData.schemeName): \(latestBuildTimeFormatted)")
-		print("total build time today: \(totalBuildsTimeTodayFormatted)")
-
-		//UserDefaults.standard.removeObject(forKey: "buildHistory")
+		let latestBuildTimeFormatted = TimeFormatter.format(time: latestBuildData.buildTime)
+		let totalBuildsTimeTodayFormatted = TimeFormatter.format(time: totalTime)
 
 		notificationManager.showNotification(message: "current build time: \t\t\(latestBuildTimeFormatted)\ntotal build time today: \t\(totalBuildsTimeTodayFormatted)")
 
-		if CommandLine.arguments.count == 2, let remoteStorageURL = URL(string: CommandLine.arguments[1]) {
+		if CommandLine.arguments.count > 1, let remoteStorageURL = URL(string: CommandLine.arguments[1]) {
 			let networkManager = NetworkManager(remoteStorageURL: remoteStorageURL)
 			networkManager.sendData(username: NSUserName(), timestamp: Int(NSDate().timeIntervalSince1970), buildTime: latestBuildData.buildTime)
+
+			if CommandLine.arguments.count == 3 {
+				networkManager.fetchData { [weak self] result in
+					switch result {
+					case .success(let data):
+						self?.dataParser.parse(data: data)
+					case .failure:
+						print("error")
+					}
+				}
+			}
 		}
-	}
-
-	var latestBuildData: XcodeDatabase? {
-		let dataSource = DerivedDataManager.derivedData().flatMap{
-			XcodeDatabase(fromPath: $0.url.appendingPathComponent("Logs/Build/Cache.db").path)
-			}.sorted(by: { $0.modificationDate > $1.modificationDate })
-
-		for db in dataSource {
-			print("date: \(db.modificationDate), scheme: \(db.schemeName)")
-		}
-
-		// TODO: check for correct build.
-		guard let latestBuildDatabase = dataSource.first else {
-			return nil
-		}
-
-		return latestBuildDatabase
 	}
 
 	func totalBuildsTimeToday(for buildHistoryData: [BuildHistoryEntry]) -> Int {
 		return buildHistoryData.filter({
 			Calendar.current.isDateInToday($0.date)
 		}).reduce(0, {
-			print("saved build time: \($1.schemeName) \($1.buildTime), t: \($1.date)")
+			//print("saved build time: \($1.schemeName) \($1.buildTime), t: \($1.date)")
 			return $0 + $1.buildTime
 		})
 	}

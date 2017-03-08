@@ -10,6 +10,6 @@ import Foundation
 
 extension XcodeDatabase {
 	var buildHistoryEntry: BuildHistoryEntry {
-		return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date())
+		return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(), username: nil)
 	}
 }

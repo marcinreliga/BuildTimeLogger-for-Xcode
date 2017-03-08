@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum NetworkError: Error {
+	case didFailToFetchData
+}
+
 final class NetworkManager {
 	private let remoteStorageURL: URL
 
@@ -23,20 +27,35 @@ final class NetworkManager {
 		let postString = formatPOSTString(data: ["username": username, "timestamp": timestamp, "buildTime": buildTime])
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-			guard let data = data, error == nil else {
+			if let error = error {
 				print("error: \(error)")
-				return
 			}
 
-			let responseString = String(data: data, encoding: .utf8)
-			print("responseString = \(responseString)")
 			semaphore.signal()
 		}
 		task.resume()
 		semaphore.wait();
 	}
 
-	func formatPOSTString(data: [String: Any]) -> String {
+	func fetchData(completion: @escaping (Result<Data, NetworkError>) -> Void) {
+		let semaphore = DispatchSemaphore(value: 0)
+
+		var request = URLRequest(url: remoteStorageURL)
+		request.httpMethod = "GET"
+		let task = URLSession.shared.dataTask(with: request) { data, response, error in
+			guard let data = data, error == nil else {
+				completion(.failure(NetworkError.didFailToFetchData))
+				return
+			}
+
+			completion(.success(data))
+			semaphore.signal()
+		}
+		task.resume()
+		semaphore.wait();
+	}
+
+	private func formatPOSTString(data: [String: Any]) -> String {
 		var resultArr: [String] = []
 
 		for (key, value) in data {
