@@ -17,6 +17,8 @@
 		DA5B625A1E67406E009DC651 /* BuildTimeLoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B62591E67406E009DC651 /* BuildTimeLoggerApp.swift */; };
 		DA5B625C1E67409A009DC651 /* BuildHistoryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B625B1E67409A009DC651 /* BuildHistoryDatabase.swift */; };
 		DA5B625E1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B625D1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift */; };
+		DACC7AE31E70289000D43CB7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC7AE21E70289000D43CB7 /* NotificationManager.swift */; };
+		DAD7141D1E6F207200F71993 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7141C1E6F207200F71993 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +47,8 @@
 		DA5B62591E67406E009DC651 /* BuildTimeLoggerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTimeLoggerApp.swift; sourceTree = "<group>"; };
 		DA5B625B1E67409A009DC651 /* BuildHistoryDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildHistoryDatabase.swift; sourceTree = "<group>"; };
 		DA5B625D1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XcodeDatabase+BuildHistoryEntry.swift"; sourceTree = "<group>"; };
+		DACC7AE21E70289000D43CB7 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		DAD7141C1E6F207200F71993 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				DA362AA01E5E403600660B80 /* DerivedDataManager.swift */,
 				DA362AA21E5E40DB00660B80 /* UserSettings.swift */,
 				DA5B625B1E67409A009DC651 /* BuildHistoryDatabase.swift */,
+				DAD7141C1E6F207200F71993 /* NetworkManager.swift */,
+				DACC7AE21E70289000D43CB7 /* NotificationManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -180,7 +186,9 @@
 				DA5B62581E67402B009DC651 /* BuildHistoryEntry.swift in Sources */,
 				DA362AA51E5E410300660B80 /* File.swift in Sources */,
 				DA5B625A1E67406E009DC651 /* BuildTimeLoggerApp.swift in Sources */,
+				DAD7141D1E6F207200F71993 /* NetworkManager.swift in Sources */,
 				DA5B625C1E67409A009DC651 /* BuildHistoryDatabase.swift in Sources */,
+				DACC7AE31E70289000D43CB7 /* NotificationManager.swift in Sources */,
 				DA362A9F1E5E08B400660B80 /* NSData+GZIP.m in Sources */,
 				DA362A931E5E076900660B80 /* main.swift in Sources */,
 				DA362AA31E5E40DB00660B80 /* UserSettings.swift in Sources */,

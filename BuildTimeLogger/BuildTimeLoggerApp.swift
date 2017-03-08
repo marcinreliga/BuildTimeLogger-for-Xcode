@@ -8,11 +8,14 @@
 
 import Foundation
 
-class BuildTimeLoggerApp {
+final class BuildTimeLoggerApp {
 	private let buildHistoryDatabase: BuildHistoryDatabase
+	private let notificationManager: NotificationManager
 
-	init(buildHistoryDatabase: BuildHistoryDatabase = BuildHistoryDatabase()) {
+	init(buildHistoryDatabase: BuildHistoryDatabase = BuildHistoryDatabase(),
+	     notificationManager: NotificationManager = NotificationManager()) {
 		self.buildHistoryDatabase = buildHistoryDatabase
+		self.notificationManager = notificationManager
 	}
 
 	func format(time: Int) -> String {
@@ -20,11 +23,6 @@ class BuildTimeLoggerApp {
 		let seconds = time % 60
 
 		return "\(minutes)m \(seconds)s"
-	}
-
-	func showNotification(message: String) -> Void {
-		// Apparetly can't display notification from console app using NSUserNotificationCenter, so using command line instead.
-		Process.launchedProcess(launchPath: "/usr/bin/osascript", arguments: ["-e", "display notification \"\(message)\" with title \"Build time logger\""])
 	}
 
 	func run() {
@@ -53,7 +51,12 @@ class BuildTimeLoggerApp {
 
 		//UserDefaults.standard.removeObject(forKey: "buildHistory")
 
-		showNotification(message: "current build time: \t\t\(latestBuildTimeFormatted)\ntotal build time today: \t\(totalBuildsTimeTodayFormatted)")
+		notificationManager.showNotification(message: "current build time: \t\t\(latestBuildTimeFormatted)\ntotal build time today: \t\(totalBuildsTimeTodayFormatted)")
+
+		if CommandLine.arguments.count == 2, let remoteStorageURL = URL(string: CommandLine.arguments[1]) {
+			let networkManager = NetworkManager(remoteStorageURL: remoteStorageURL)
+			networkManager.sendData(username: NSUserName(), timestamp: Int(NSDate().timeIntervalSince1970), buildTime: latestBuildData.buildTime)
+		}
 	}
 
 	var latestBuildData: XcodeDatabase? {
