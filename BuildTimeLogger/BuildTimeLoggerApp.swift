@@ -27,19 +27,29 @@ final class BuildTimeLoggerApp {
 	}
 
 	func run() {
-		updateBuildHistory()
+		switch CommandLine.arguments.count {
+		case 2:
+			print("Updating local build history...")
+			updateBuildHistory()
+			showNotification()
 
-		guard let buildHistory = buildHistory, let latestBuildData = buildHistory.last else {
-			return
-		}
+			guard let buildHistory = buildHistory, let latestBuildData = buildHistory.last else {
+				return
+			}
 
-		showNotification()
-
-		if CommandLine.arguments.count > 1, let remoteStorageURL = URL(string: CommandLine.arguments[1]) {
-			storeDataRemotely(buildData: latestBuildData, atURL: remoteStorageURL)
-			if CommandLine.arguments.count == 3 {
+			print("Storing data remotely...")
+			if let remoteStorageURL = URL(string: CommandLine.arguments[1]) {
+				storeDataRemotely(buildData: latestBuildData, atURL: remoteStorageURL)
+			}
+		case 3:
+			print("Fetching remote data...")
+			if let remoteStorageURL = URL(string: CommandLine.arguments[1]) {
 				fetchRemoteData(atURL: remoteStorageURL)
 			}
+		default:
+			print("Updating local build history...")
+			updateBuildHistory()
+			showNotification()
 		}
 	}
 
