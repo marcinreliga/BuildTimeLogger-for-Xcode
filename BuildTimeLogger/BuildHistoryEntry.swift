@@ -12,13 +12,14 @@ struct BuildHistoryEntry {
 	let buildTime: Int
 	let schemeName: String
 	let date: Date
-	let username: String?
+	let username: String
 
 	var serialized: [String: Any] {
 		return [
 			"buildTime": buildTime,
 			"schemeName": schemeName,
-			"timestamp": date.timeIntervalSince1970
+			"timestamp": date.timeIntervalSince1970,
+			"username": username
 		]
 	}
 }

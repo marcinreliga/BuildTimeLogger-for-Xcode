@@ -19,13 +19,7 @@ struct DataParser {
 		let allUsernames = Set(buildHistory.flatMap({ $0.username }))
 
 		for username in allUsernames {
-			let entries = buildHistory.filter({
-				// TODO: Change username to be non-optional.
-				if let u = $0.username, u == username  {
-					return true
-				}
-				return false
-			})
+			let entries = buildHistory.filter({ $0.username == username })
 
 			let buildTimeToday = totalBuildsTime(for: buildEntriesFromToday(in: entries))
 			let buildTime = totalBuildsTime(for: entries)

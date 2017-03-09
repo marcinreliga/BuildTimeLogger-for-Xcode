@@ -23,7 +23,10 @@ struct BuildHistoryDatabase {
 			if let buildTime = $0["buildTime"] as? Int,
 				let schemeName = $0["schemeName"] as? String,
 				let timestamp = $0["timestamp"] as? TimeInterval {
-				return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(timeIntervalSince1970: timestamp), username: nil)
+
+				// TODO: Old entries in user defaults don't have username, so this stays as not required here.
+				let username = $0["username"] as? String ?? "unknown"
+				return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(timeIntervalSince1970: timestamp), username: username)
 			}
 
 			return nil
