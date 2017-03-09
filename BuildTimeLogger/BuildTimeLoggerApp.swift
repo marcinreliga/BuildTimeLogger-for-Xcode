@@ -67,7 +67,7 @@ final class BuildTimeLoggerApp {
 
 	private func storeDataRemotely(buildData: BuildHistoryEntry, atURL url: URL) {
 		let networkManager = NetworkManager(remoteStorageURL: url)
-		networkManager.sendData(username: NSUserName(), timestamp: Int(NSDate().timeIntervalSince1970), buildTime: buildData.buildTime)
+		networkManager.sendData(username: NSUserName(), timestamp: Int(NSDate().timeIntervalSince1970), buildTime: buildData.buildTime, schemeName: buildData.schemeName)
 	}
 
 	private func showNotification() {
@@ -75,7 +75,7 @@ final class BuildTimeLoggerApp {
 			return
 		}
 
-		let totalTime = dataParser.totalBuildsTime(for: dataParser.buildEntriesFromToday(in: buildHistory))
+		let totalTime = dataParser.totalBuildTime(for: dataParser.buildEntriesFromToday(in: buildHistory))
 
 		let latestBuildTimeFormatted = TimeFormatter.format(time: latestBuildData.buildTime)
 		let totalBuildsTimeTodayFormatted = TimeFormatter.format(time: totalTime)

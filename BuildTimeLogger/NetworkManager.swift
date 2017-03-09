@@ -19,12 +19,12 @@ final class NetworkManager {
 		self.remoteStorageURL = remoteStorageURL
 	}
 
-	func sendData(username: String, timestamp: Int, buildTime: Int) {
+	func sendData(username: String, timestamp: Int, buildTime: Int, schemeName: String) {
 		let semaphore = DispatchSemaphore(value: 0)
 
 		var request = URLRequest(url: remoteStorageURL)
 		request.httpMethod = "POST"
-		let postString = formatPOSTString(data: ["username": username, "timestamp": timestamp, "buildTime": buildTime])
+		let postString = formatPOSTString(data: ["username": username, "timestamp": timestamp, "buildTime": buildTime, "schemeName": schemeName])
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			if let error = error {

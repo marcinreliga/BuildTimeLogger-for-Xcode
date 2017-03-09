@@ -21,14 +21,13 @@ struct DataParser {
 		for username in allUsernames {
 			let entries = buildHistory.filter({ $0.username == username })
 
-			let buildTimeToday = totalBuildsTime(for: buildEntriesFromToday(in: entries))
-			let buildTime = totalBuildsTime(for: entries)
+			let buildTimeTotalToday = totalBuildTime(for: buildEntriesFromToday(in: entries))
+			let buildTimeTotal = totalBuildTime(for: entries)
 
-			let buildTimeTodayFormatted = TimeFormatter.format(time: buildTimeToday)
-			let totalBuildsTimeFormatted = TimeFormatter.format(time: buildTime)
+			let buildTimeTotalTodayFormatted = TimeFormatter.format(time: buildTimeTotalToday)
+			let buildTimeTotalFormatted = TimeFormatter.format(time: buildTimeTotal)
 
-			print("username: \(username), totalBuildsTimeToday: \(buildTimeTodayFormatted)")
-			print("username: \(username), totalBuildsTime: \(totalBuildsTimeFormatted)\n")
+			print("username: \(username)\nbuild time today: \(buildTimeTotalTodayFormatted)\ntotal build time: \(buildTimeTotalFormatted)\n")
 		}
 	}
 
@@ -38,7 +37,7 @@ struct DataParser {
 		})
 	}
 
-	func totalBuildsTime(for buildHistoryData: [BuildHistoryEntry]) -> Int {
+	func totalBuildTime(for buildHistoryData: [BuildHistoryEntry]) -> Int {
 		return buildHistoryData.reduce(0, {
 			return $0 + $1.buildTime
 		})
@@ -64,11 +63,17 @@ struct DataParser {
 				return nil
 			}
 
-			guard let username = record["username"], let timestampStr = record["timestamp"], let timestamp = TimeInterval(timestampStr), let buildTimeStr = record["buildTime"], let buildTime = Int(buildTimeStr) else {
+			guard let username = record["username"],
+				let timestampStr = record["timestamp"],
+				let timestamp = TimeInterval(timestampStr),
+				let buildTimeStr = record["buildTime"],
+				let buildTime = Int(buildTimeStr) else {
 				return nil
 			}
 
-			return BuildHistoryEntry(buildTime: buildTime, schemeName: "", date: Date(timeIntervalSince1970: timestamp), username: username)
+			// TODO: This needs to stay non required here for now, as it's a newly added param and doesn't exist in older records.
+			let schemeName = record["schemeName"] ?? ""
+			return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(timeIntervalSince1970: timestamp), username: username)
 		})
 	}
 }
