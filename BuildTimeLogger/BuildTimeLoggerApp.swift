@@ -75,7 +75,7 @@ final class BuildTimeLoggerApp {
 			return
 		}
 
-		let totalTime = totalBuildsTimeToday(for: buildHistory)
+		let totalTime = dataParser.totalBuildsTime(for: dataParser.buildEntriesFromToday(in: buildHistory))
 
 		let latestBuildTimeFormatted = TimeFormatter.format(time: latestBuildData.buildTime)
 		let totalBuildsTimeTodayFormatted = TimeFormatter.format(time: totalTime)
@@ -99,15 +99,5 @@ final class BuildTimeLoggerApp {
 
 		buildHistoryDatabase.save(history: updatedBuildHistoryData)
 		buildHistory = updatedBuildHistoryData
-	}
-
-	// TODO: move to data parser.
-	private func totalBuildsTimeToday(for buildHistoryData: [BuildHistoryEntry]) -> Int {
-		return buildHistoryData.filter({
-			Calendar.current.isDateInToday($0.date)
-		}).reduce(0, {
-			//print("saved build time: \($1.schemeName) \($1.buildTime), t: \($1.date)")
-			return $0 + $1.buildTime
-		})
 	}
 }
