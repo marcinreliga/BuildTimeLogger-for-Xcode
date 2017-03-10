@@ -16,3 +16,16 @@ To see remotely stored results call the app with additional param:
 ```
 /PATH/TO/BuildTimeLogger https://your-project-name.firebaseio.com/.json fetch
 ```
+
+Example output:
+```
+Fetching remote data...
+username: marcin.religa
+build time today: 30m 26s
+total build time: 165m 55s
+
+username: test.user
+build time today: 0m 0s
+total build time: 0m 4s
+
+```
