@@ -63,16 +63,16 @@ struct DataParser {
 				return nil
 			}
 
-			guard let username = record["username"],
-				let timestampStr = record["timestamp"],
+			guard let username = record[BuildHistoryEntryKey.username.rawValue],
+				let timestampStr = record[BuildHistoryEntryKey.timestamp.rawValue],
 				let timestamp = TimeInterval(timestampStr),
-				let buildTimeStr = record["buildTime"],
+				let buildTimeStr = record[BuildHistoryEntryKey.buildTime.rawValue],
 				let buildTime = Int(buildTimeStr) else {
 				return nil
 			}
 
 			// TODO: This needs to stay non required here for now, as it's a newly added param and doesn't exist in older records.
-			let schemeName = record["schemeName"] ?? ""
+			let schemeName = record[BuildHistoryEntryKey.schemeName.rawValue] ?? ""
 			return BuildHistoryEntry(buildTime: buildTime, schemeName: schemeName, date: Date(timeIntervalSince1970: timestamp), username: username)
 		})
 	}

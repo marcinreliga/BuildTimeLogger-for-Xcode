@@ -24,7 +24,12 @@ final class NetworkManager {
 
 		var request = URLRequest(url: remoteStorageURL)
 		request.httpMethod = "POST"
-		let postString = formatPOSTString(data: ["username": username, "timestamp": timestamp, "buildTime": buildTime, "schemeName": schemeName])
+		let postString = formatPOSTString(data: [
+			BuildHistoryEntryKey.username.rawValue: username,
+			BuildHistoryEntryKey.timestamp.rawValue: timestamp,
+			BuildHistoryEntryKey.buildTime.rawValue: buildTime,
+			BuildHistoryEntryKey.schemeName.rawValue: schemeName
+		])
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			if let error = error {

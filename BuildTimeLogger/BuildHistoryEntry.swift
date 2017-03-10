@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum BuildHistoryEntryKey: String {
+	case buildTime
+	case schemeName
+	case timestamp
+	case username
+}
+
 struct BuildHistoryEntry {
 	let buildTime: Int
 	let schemeName: String
@@ -16,10 +23,10 @@ struct BuildHistoryEntry {
 
 	var serialized: [String: Any] {
 		return [
-			"buildTime": buildTime,
-			"schemeName": schemeName,
-			"timestamp": date.timeIntervalSince1970,
-			"username": username
+			BuildHistoryEntryKey.buildTime.rawValue: buildTime,
+			BuildHistoryEntryKey.schemeName.rawValue: schemeName,
+			BuildHistoryEntryKey.timestamp.rawValue: date.timeIntervalSince1970,
+			BuildHistoryEntryKey.username.rawValue: username
 		]
 	}
 }
