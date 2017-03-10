@@ -12,7 +12,7 @@ Edit scheme and add new Post-action in Build section:
 
 If the URL is not provided then uploading is skipped.
 
-To see remotely stored results call the app with additional param:
+To see remotely stored results call the app (from terminal, outside the Xcode) with additional param:
 ```
 /PATH/TO/BuildTimeLogger https://your-project-name.firebaseio.com/.json fetch
 ```
