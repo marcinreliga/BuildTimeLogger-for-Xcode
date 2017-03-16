@@ -1,5 +1,5 @@
 # BuildTimeLogger-for-Xcode
-A console app for logging Xcode build times and presenting them in a notification.
+A console app for logging Xcode build times and presenting them in a notification right when the build finishes.
 Optionally the app can upload each log entry to a REST API endpoint accepting POST requests.
 
 Based on [BuildTimeAnalyzer-for-Xcode](https://github.com/RobertGummesson/BuildTimeAnalyzer-for-Xcode).
