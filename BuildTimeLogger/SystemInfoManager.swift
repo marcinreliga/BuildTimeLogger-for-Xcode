@@ -14,6 +14,8 @@ enum SystemInfoNativeKey: String {
 	case currentProcessorSpeed = "current_processor_speed"
 	case machineModel = "machine_model"
 	case physicalMemory = "physical_memory"
+	case numberOfProcessors = "number_processors"
+	case spdevtoolsVersion = "spdevtools_version"
 }
 
 class SystemInfoManager {
@@ -35,25 +37,52 @@ class SystemInfoManager {
 			return nil
 		}
 
-		if let plistDictionary = plistData as? [[String: AnyObject]] {
-			for plistEntry in plistDictionary {
-				guard let items = plistEntry[SystemInfoNativeKey.items.rawValue] as? [[String: AnyObject]] else {
-					continue
-				}
-
-				guard let cpuType = items.first?[SystemInfoNativeKey.cpuType.rawValue] as? String,
-					let cpuSpeed = items.first?[SystemInfoNativeKey.currentProcessorSpeed.rawValue] as? String,
-					let machineModel = items.first?[SystemInfoNativeKey.machineModel.rawValue] as? String,
-					let physicalMemory = items.first?[SystemInfoNativeKey.physicalMemory.rawValue] as? String else {
-						continue
-				}
-
-				let systemInfo = SystemInfo(cpuType: cpuType, cpuSpeed: cpuSpeed, machineModel: machineModel, physicalMemory: physicalMemory)
-
-				return systemInfo
-			}
+		if let plistDictionary = plistData as? [[String: AnyObject]],
+			let hardwareInfo = readHardwareInfo(in: plistDictionary),
+			let devToolsInfo = readDevToolsInfo(in: plistDictionary) {
+			return SystemInfo(hardware: hardwareInfo, devTools: devToolsInfo)
 		}
 		
+		return nil
+	}
+
+	private func readHardwareInfo(in dictionary: [[String: AnyObject]]) -> HardwareInfo? {
+		for plistEntry in dictionary {
+			guard let items = plistEntry[SystemInfoNativeKey.items.rawValue] as? [[String: AnyObject]] else {
+				continue
+			}
+
+			guard let cpuType = items.first?[SystemInfoNativeKey.cpuType.rawValue] as? String,
+				let cpuSpeed = items.first?[SystemInfoNativeKey.currentProcessorSpeed.rawValue] as? String,
+				let machineModel = items.first?[SystemInfoNativeKey.machineModel.rawValue] as? String,
+				let physicalMemory = items.first?[SystemInfoNativeKey.physicalMemory.rawValue] as? String,
+				let numberOfProcessors = items.first?[SystemInfoNativeKey.numberOfProcessors.rawValue] as? Int else {
+				continue
+			}
+
+			let systemInfo = HardwareInfo(cpuType: cpuType, cpuSpeed: cpuSpeed, machineModel: machineModel, physicalMemory: physicalMemory, numberOfProcessors: numberOfProcessors)
+
+			return systemInfo
+		}
+
+		return nil
+	}
+
+	private func readDevToolsInfo(in dictionary: [[String: AnyObject]]) -> DevToolsInfo? {
+		for plistEntry in dictionary {
+			guard let items = plistEntry[SystemInfoNativeKey.items.rawValue] as? [[String: AnyObject]] else {
+				continue
+			}
+
+			guard let version = items.first?[SystemInfoNativeKey.spdevtoolsVersion.rawValue] as? String else {
+				continue
+			}
+
+			let devToolsInfo = DevToolsInfo(version: version)
+
+			return devToolsInfo
+		}
+
 		return nil
 	}
 }

@@ -33,10 +33,12 @@ final class NetworkManager {
 		]
 
 		if let systemInfo = systemInfo {
-			data[SystemInfoKey.cpuType.rawValue] = systemInfo.cpuType
-			data[SystemInfoKey.cpuSpeed.rawValue] = systemInfo.cpuSpeed
-			data[SystemInfoKey.machineModel.rawValue] = systemInfo.machineModel
-			data[SystemInfoKey.physicalMemory.rawValue] = systemInfo.physicalMemory
+			data[HardwareInfoKey.cpuType.rawValue] = systemInfo.hardware.cpuType
+			data[HardwareInfoKey.cpuSpeed.rawValue] = systemInfo.hardware.cpuSpeed
+			data[HardwareInfoKey.machineModel.rawValue] = systemInfo.hardware.machineModel
+			data[HardwareInfoKey.physicalMemory.rawValue] = systemInfo.hardware.physicalMemory
+			data[HardwareInfoKey.numberOfProcessors.rawValue] = systemInfo.hardware.numberOfProcessors
+			data[DevToolsInfoKey.devToolsVersion.rawValue] = systemInfo.devTools.version
 		}
 
 		let postString = formatPOSTString(data: data)
