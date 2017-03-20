@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA29A7651E808BC10071865D /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29A7641E808BC10071865D /* SystemInfo.swift */; };
+		DA29A7671E808BDB0071865D /* SystemInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29A7661E808BDB0071865D /* SystemInfoManager.swift */; };
 		DA362A931E5E076900660B80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362A921E5E076900660B80 /* main.swift */; };
 		DA362A9A1E5E07EB00660B80 /* XcodeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA362A991E5E07EB00660B80 /* XcodeDatabase.swift */; };
 		DA362A9F1E5E08B400660B80 /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DA362A9E1E5E08B400660B80 /* NSData+GZIP.m */; };
@@ -39,6 +41,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DA29A7641E808BC10071865D /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
+		DA29A7661E808BDB0071865D /* SystemInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfoManager.swift; sourceTree = "<group>"; };
 		DA362A8F1E5E076900660B80 /* BuildTimeLogger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BuildTimeLogger; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA362A921E5E076900660B80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DA362A991E5E07EB00660B80 /* XcodeDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeDatabase.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				DA362AA41E5E410300660B80 /* File.swift */,
 				DA5B62571E67402B009DC651 /* BuildHistoryEntry.swift */,
 				DA362A991E5E07EB00660B80 /* XcodeDatabase.swift */,
+				DA29A7641E808BC10071865D /* SystemInfo.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 				DACC7AE21E70289000D43CB7 /* NotificationManager.swift */,
 				DACC7B3B1E70571A00D43CB7 /* DataParser.swift */,
 				DACC7B401E705A9400D43CB7 /* XcodeDatabaseManager.swift */,
+				DA29A7661E808BDB0071865D /* SystemInfoManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -231,10 +237,12 @@
 				DA5B625A1E67406E009DC651 /* BuildTimeLoggerApp.swift in Sources */,
 				DAD7141D1E6F207200F71993 /* NetworkManager.swift in Sources */,
 				DA5B625C1E67409A009DC651 /* BuildHistoryDatabase.swift in Sources */,
+				DA29A7651E808BC10071865D /* SystemInfo.swift in Sources */,
 				DACC7AE31E70289000D43CB7 /* NotificationManager.swift in Sources */,
 				DA362A9F1E5E08B400660B80 /* NSData+GZIP.m in Sources */,
 				DA362A931E5E076900660B80 /* main.swift in Sources */,
 				DACC7B3C1E70571A00D43CB7 /* DataParser.swift in Sources */,
+				DA29A7671E808BDB0071865D /* SystemInfoManager.swift in Sources */,
 				DA362AA31E5E40DB00660B80 /* UserSettings.swift in Sources */,
 				DA362AA11E5E403700660B80 /* DerivedDataManager.swift in Sources */,
 				DA5B625E1E6740E5009DC651 /* XcodeDatabase+BuildHistoryEntry.swift in Sources */,

@@ -13,17 +13,20 @@ final class BuildTimeLoggerApp {
 	private let notificationManager: NotificationManager
 	private let dataParser: DataParser
 	private let xcodeDatabaseManager: XcodeDatabaseManager
+	private let systemInfoManager: SystemInfoManager
 
 	private var buildHistory: [BuildHistoryEntry]?
 
 	init(buildHistoryDatabase: BuildHistoryDatabase = BuildHistoryDatabase(),
 	     notificationManager: NotificationManager = NotificationManager(),
 	     dataParser: DataParser = DataParser(),
-	     xcodeDatabaseManager: XcodeDatabaseManager = XcodeDatabaseManager()) {
+	     xcodeDatabaseManager: XcodeDatabaseManager = XcodeDatabaseManager(),
+	     systemInfoManager: SystemInfoManager = SystemInfoManager()) {
 		self.buildHistoryDatabase = buildHistoryDatabase
 		self.notificationManager = notificationManager
 		self.dataParser = dataParser
 		self.xcodeDatabaseManager = xcodeDatabaseManager
+		self.systemInfoManager = systemInfoManager
 	}
 
 	func run() {
@@ -66,8 +69,9 @@ final class BuildTimeLoggerApp {
 	}
 
 	private func storeDataRemotely(buildData: BuildHistoryEntry, atURL url: URL) {
+		let systemInfo = systemInfoManager.read()
 		let networkManager = NetworkManager(remoteStorageURL: url)
-		networkManager.sendData(username: NSUserName(), timestamp: Int(NSDate().timeIntervalSince1970), buildTime: buildData.buildTime, schemeName: buildData.schemeName)
+		networkManager.sendData(username: buildData.username, timestamp: Int(NSDate().timeIntervalSince1970), buildTime: buildData.buildTime, schemeName: buildData.schemeName, systemInfo: systemInfo)
 	}
 
 	private func showNotification() {

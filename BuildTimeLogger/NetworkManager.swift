@@ -19,17 +19,27 @@ final class NetworkManager {
 		self.remoteStorageURL = remoteStorageURL
 	}
 
-	func sendData(username: String, timestamp: Int, buildTime: Int, schemeName: String) {
+	// TODO: use single BuildHistoryEntry object as an argument.
+	func sendData(username: String, timestamp: Int, buildTime: Int, schemeName: String, systemInfo: SystemInfo?) {
 		let semaphore = DispatchSemaphore(value: 0)
 
 		var request = URLRequest(url: remoteStorageURL)
 		request.httpMethod = "POST"
-		let postString = formatPOSTString(data: [
+		var data: [String: Any] = [
 			BuildHistoryEntryKey.username.rawValue: username,
 			BuildHistoryEntryKey.timestamp.rawValue: timestamp,
 			BuildHistoryEntryKey.buildTime.rawValue: buildTime,
 			BuildHistoryEntryKey.schemeName.rawValue: schemeName
-		])
+		]
+
+		if let systemInfo = systemInfo {
+			data[SystemInfoKey.cpuType.rawValue] = systemInfo.cpuType
+			data[SystemInfoKey.cpuSpeed.rawValue] = systemInfo.cpuSpeed
+			data[SystemInfoKey.machineModel.rawValue] = systemInfo.machineModel
+			data[SystemInfoKey.physicalMemory.rawValue] = systemInfo.physicalMemory
+		}
+
+		let postString = formatPOSTString(data: data)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			if let error = error {
