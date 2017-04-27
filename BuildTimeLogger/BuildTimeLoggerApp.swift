@@ -79,12 +79,16 @@ final class BuildTimeLoggerApp {
 			return
 		}
 
-		let totalTime = dataParser.totalBuildTime(for: dataParser.buildEntriesFromToday(in: buildHistory))
+		let buildEntriesFromToday = dataParser.buildEntriesFromToday(in: buildHistory)
+		let totalTime = dataParser.totalBuildTime(for: buildEntriesFromToday)
 
 		let latestBuildTimeFormatted = TimeFormatter.format(time: latestBuildData.buildTime)
 		let totalBuildsTimeTodayFormatted = TimeFormatter.format(time: totalTime)
 
-		notificationManager.showNotification(message: "current build time: \t\t\(latestBuildTimeFormatted)\ntotal build time today: \t\(totalBuildsTimeTodayFormatted)")
+		let numberOfBuildsToday = buildEntriesFromToday.count
+		let averageBuildtimeToday = TimeFormatter.format(time: totalTime / numberOfBuildsToday)
+
+		notificationManager.showNotification(message: "current          \(latestBuildTimeFormatted)\ntotal today    \(totalBuildsTimeTodayFormatted) / avg \(averageBuildtimeToday) / \(numberOfBuildsToday) builds")
 	}
 
 	private func updateBuildHistory() {
