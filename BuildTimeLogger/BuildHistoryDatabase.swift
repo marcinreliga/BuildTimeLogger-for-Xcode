@@ -23,7 +23,7 @@ struct BuildHistoryDatabase {
 			return nil
 		}
 
-		let buildHistory: [BuildHistoryEntry] = buildHistorySerialized.flatMap({
+		let buildHistory: [BuildHistoryEntry] = buildHistorySerialized.compactMap({
 			if let buildTime = $0[BuildHistoryEntryKey.buildTime.rawValue] as? Int,
 				let schemeName = $0[BuildHistoryEntryKey.schemeName.rawValue] as? String,
 				let timestamp = $0[BuildHistoryEntryKey.timestamp.rawValue] as? TimeInterval {

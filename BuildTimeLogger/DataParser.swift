@@ -19,7 +19,7 @@ struct DataParser {
 		let allUsernames = Set(buildHistory.flatMap({ $0.username }))
 
 		for username in allUsernames {
-			let entries = buildHistory.filter({ $0.username == username })
+			let entries = buildHistory.filter({ $0.username == String(username) })
 
 			let buildTimeTotalToday = totalBuildTime(for: buildEntriesFromToday(in: entries))
 			let buildTimeTotal = totalBuildTime(for: entries)
@@ -58,7 +58,7 @@ struct DataParser {
 	}
 
 	private func parse(json: [String: Any]) -> [BuildHistoryEntry] {
-		return json.flatMap({
+		return json.compactMap({
 			guard let record = $0.value as? [String: String] else {
 				return nil
 			}

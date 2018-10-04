@@ -10,15 +10,10 @@ import Foundation
 
 struct XcodeDatabaseManager {
 	var latestBuildData: XcodeDatabase? {
-		let dataSource = DerivedDataManager.derivedData().flatMap{
-			XcodeDatabase(fromPath: $0.url.appendingPathComponent("Logs/Build/Cache.db").path)
-			}.sorted(by: { $0.modificationDate > $1.modificationDate })
+		let dataSource = DerivedDataManager.derivedData().compactMap{
+			XcodeDatabase(fromPath: $0.url.appendingPathComponent("Logs/Build/LogStoreManifest.plist").path)
+		}.sorted(by: { $0.modificationDate > $1.modificationDate })
 
-//		for db in dataSource {
-//			print("date: \(db.modificationDate), scheme: \(db.schemeName)")
-//		}
-
-		// TODO: check for correct build.
 		guard let latestBuildDatabase = dataSource.first else {
 			return nil
 		}
